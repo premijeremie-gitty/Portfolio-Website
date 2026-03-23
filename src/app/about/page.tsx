@@ -32,19 +32,15 @@ export default function About() {
       {/* A little about me */}
       <section className="px-5 md:px-12 py-10 md:py-[60px]">
         <div className="flex flex-col gap-8 max-w-[1440px] mx-auto">
-          <h2 className="text-2xl md:text-4xl leading-[1.37] text-dark">
-            A little about me
-          </h2>
-
           <div className="flex flex-col md:flex-row gap-9">
             {/* Left - Image */}
             <div className="relative w-full md:w-[721px] h-[300px] md:h-[500px] shrink-0 rounded-[24px] md:rounded-[36px] overflow-hidden">
               <Image
-                src="/images/about-hero.png"
+                src="/images/main photo.PNG"
                 alt="Jeremie Premi"
                 fill
                 sizes="(max-width: 768px) 100vw, 721px"
-                className="object-cover"
+                className="object-cover object-[center_40%]"
                 priority
               />
             </div>
@@ -52,15 +48,23 @@ export default function About() {
             {/* Right - Text */}
             <div className="flex flex-col gap-4 justify-start">
               <h3 className="text-2xl md:text-4xl font-medium leading-[1.37] text-dark">
-                More than just a product designer, I&apos;m a husband, a dog
-                dad, an avid traveler and a lover of all things fitness!
+                How I got here
               </h3>
               <p className="text-base md:text-xl leading-[1.4] text-muted">
-                Lorem ipsum dolor sit amet consectetur. Adipiscing mi maecenas
-                habitant et ultrices velit. Egestas sed dignissim blandit nunc.
-                Nec elit suspendisse massa sollicitudin lectus. Eu est luctus
-                dis felis nisl sed scelerisque mattis. Neque donec quam eu
-                porttitor.
+                I&apos;m a product designer specializing in B2B enterprise software
+                with a track record of leading complex products from strategy and
+                discovery through to delivery and results. Before product design I
+                spent 10 years in fine dining kitchens that built grit, a deep
+                obsession with the customer experience and a high bar for quality.
+              </p>
+              <p className="text-base md:text-xl leading-[1.4] text-muted">
+                Over the past 3 years I&apos;ve owned initiatives end-to-end
+                across sales products including CRMs, estimation and quoting tools
+                in the commercial trades space. I take on PM responsibilities when
+                needed, fold AI into my process, and build products that drive real
+                revenue impact for both the business and its customers. I genuinely
+                believe the best products are built when designers are at the table
+                from the very beginning.
               </p>
             </div>
           </div>
@@ -84,19 +88,22 @@ export default function About() {
                 <div className="w-4 h-4 rounded-full bg-[#ee5a32] z-10" />
               </div>
               <div className="flex flex-col gap-2 -mt-1">
-                <span className="text-sm font-semibold text-[#ee5a32] tracking-wide uppercase">
-                  2023
+                <span className="text-sm font-semibold text-[#ee5a32]">
+                  2023 (July &ndash; December)
                 </span>
                 <h3 className="text-xl md:text-2xl font-medium leading-[1.37] text-dark">
-                  Associate Product Designer
+                  Product Design Intern
                 </h3>
                 <span className="text-base font-medium text-dark/70">
                   Fini
                 </span>
                 <p className="text-base leading-[1.75] text-muted max-w-[560px]">
-                  Very early stage startup where I worked on multiple products
-                  including a marketplace solution as one of the two designers
-                  on the team.
+                  Worked as one of two designers on a SaaS mobile app with
+                  the goal of helping the company secure <span className="font-semibold text-dark">$350K in seed funding</span>.
+                  Designed a payment integrated event booking flow that
+                  contributed to a <span className="font-semibold text-dark">70% increase</span> in new users, and a Shopify
+                  integrated in-app marketplace driving additional revenue from
+                  brand partners and <span className="font-semibold text-dark">1,500 active members</span>.
                 </p>
               </div>
             </div>
@@ -107,8 +114,8 @@ export default function About() {
                 <div className="w-4 h-4 rounded-full bg-[#ee5a32] z-10" />
               </div>
               <div className="flex flex-col gap-2 -mt-1">
-                <span className="text-sm font-semibold text-[#ee5a32] tracking-wide uppercase">
-                  2023
+                <span className="text-sm font-semibold text-[#ee5a32]">
+                  2023 (October &ndash; December)
                 </span>
                 <h3 className="text-xl md:text-2xl font-medium leading-[1.37] text-dark">
                   Junior Designer
@@ -117,9 +124,12 @@ export default function About() {
                   Thrillx &middot; Design Agency
                 </span>
                 <p className="text-base leading-[1.75] text-muted max-w-[560px]">
-                  Lorem ipsum dolor sit amet consectetur. Sollicitudin massa
-                  tortor consequat non nulla posuere morbi ante. Turpis feugiat
-                  vivamus dui elementum augue mauris.
+                  Led website redesign and rebranding projects for a B2B
+                  staffing agency and a CBD e-commerce brand. The staffing
+                  redesign drove a <span className="font-semibold text-dark">164% increase</span> in qualified leads, <span className="font-semibold text-dark">63%
+                  increase</span> in time on page and a <span className="font-semibold text-dark">22% decrease</span> in bounce rate.
+                  The CBD redesign drove a <span className="font-semibold text-dark">126% increase</span> in conversions and a
+                  <span className="font-semibold text-dark">41% increase</span> in average order value.
                 </p>
               </div>
             </div>
@@ -130,8 +140,8 @@ export default function About() {
                 <div className="w-4 h-4 rounded-full bg-[#ee5a32] z-10" />
               </div>
               <div className="flex flex-col gap-2 -mt-1">
-                <span className="text-sm font-semibold text-[#ee5a32] tracking-wide uppercase">
-                  2024 &ndash; 2026
+                <span className="text-sm font-semibold text-[#ee5a32]">
+                  2024 &ndash; Present
                 </span>
                 <h3 className="text-xl md:text-2xl font-medium leading-[1.37] text-dark">
                   Product Designer
@@ -140,9 +150,13 @@ export default function About() {
                   BuildOps
                 </span>
                 <p className="text-base leading-[1.75] text-muted max-w-[560px]">
-                  Lorem ipsum dolor sit amet consectetur. Sollicitudin massa
-                  tortor consequat non nulla posuere morbi ante. Turpis feugiat
-                  vivamus dui elementum augue mauris.
+                  Lead complex sales products end-to-end as the primary
+                  designer across the commercial trades space, including CRMs,
+                  estimation and quoting tools. Regularly step into PM
+                  responsibilities, writing PRDs, contributing to roadmap
+                  planning and product strategy. The work has driven real
+                  results, including <span className="font-semibold text-dark">$750K+ in new ARR</span> and getting a <span className="font-semibold text-dark">$1M+
+                  strategic customer</span> live.
                 </p>
               </div>
             </div>
@@ -155,12 +169,13 @@ export default function About() {
         <div className="flex flex-col gap-8 max-w-[1440px] mx-auto">
           <div className="flex flex-col gap-4">
             <h2 className="text-2xl md:text-4xl leading-[1.37] text-dark">
-              Outside of work
+              When I&apos;m not designing
             </h2>
-            <p className="text-base leading-[1.37] text-muted max-w-[510px]">
-              Some pictures of my wife Topaz, my insane dog Mosh and some really
-              fun trips I&apos;ve been on over the last few years to France,
-              Portugal and Italy and Las Vegas!
+            <p className="text-base leading-[1.37] text-muted max-w-[900px]">
+              Some pictures of my wife Topaz, my crazy dog Mosh (don&apos;t let
+              his cuteness fool you), and a few trips I&apos;ve been on over the
+              last few years: visiting my dad in France, a family trip to
+              Portugal, and a trip to Italy with my wife.
             </p>
           </div>
 

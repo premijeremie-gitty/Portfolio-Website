@@ -5,11 +5,19 @@ import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
+// Two card sizes: portrait and landscape/square
 const photos = [
-  { src: "/images/about-photo-1.png", alt: "Personal photo" },
-  { src: "/images/about-photo-2.png", alt: "Personal photo" },
-  { src: "/images/about-photo-3.png", alt: "Personal photo" },
-  { src: "/images/about-photo-4.png", alt: "Personal photo" },
+  { src: "/images/image 1.JPG", alt: "Pool at sunset", portrait: true },
+  { src: "/images/PHOTO-2026-03-22-21-34-17.jpg", alt: "Couple laughing", portrait: false },
+  { src: "/images/IMG_4130.JPG", alt: "Couple selfie by wooden door", portrait: true },
+  { src: "/images/IMG_4391.jpg", alt: "Mountain views", portrait: false },
+  { src: "/images/IMG_4132.JPG", alt: "Italian street view", portrait: true },
+  { src: "/images/PHOTO-2026-03-22-21-32-25.jpg", alt: "Dog sitting", portrait: true, position: "top" },
+  { src: "/images/PHOTO-2026-03-22-21-35-53.jpg", alt: "Dining in Italy", portrait: true },
+  { src: "/images/IMG_4149.JPG", alt: "Mediterranean villa courtyard", portrait: false },
+  { src: "/images/IMG_2304.jpg", alt: "Charcuterie board", portrait: true },
+  { src: "/images/PHOTO-2026-03-22-21-46-11.jpg", alt: "Seafood spread", portrait: true },
+  { src: "/images/IMG_4467.JPG", alt: "Fun selfie with sunglasses", portrait: true },
 ];
 
 export default function PhotoCarousel() {
@@ -39,14 +47,18 @@ export default function PhotoCarousel() {
           {photos.map((photo, i) => (
             <div
               key={i}
-              className="flex-[0_0_85vw] md:flex-[0_0_544px] relative h-[240px] md:h-[345px] rounded-[24px] md:rounded-[36px] overflow-hidden mr-4 md:mr-9"
+              className={`relative h-[240px] md:h-[345px] rounded-[24px] md:rounded-[36px] overflow-hidden mr-4 md:mr-9 ${
+                photo.portrait
+                  ? "flex-[0_0_180px] md:flex-[0_0_259px]"
+                  : "flex-[0_0_320px] md:flex-[0_0_460px]"
+              }`}
             >
               <Image
                 src={photo.src}
                 alt={photo.alt}
                 fill
-                sizes="544px"
-                className="object-cover"
+                sizes={photo.portrait ? "259px" : "460px"}
+                className={`object-cover ${photo.position === "top" ? "object-top" : ""}`}
               />
             </div>
           ))}
