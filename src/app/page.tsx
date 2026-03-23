@@ -46,11 +46,11 @@ export default function Home() {
                 strategy, building 0-1 product and driving measurable
                 outcomes.
               </h1>
-              <p className="text-base leading-[1.37] text-muted">
-                With deep experience across the commercial trades, the
-                restaurant industry and CRM&apos;s, I design products that
-                actually work and build and ship them in code, with AI
-                embedded in every step of my workflow
+              <p className="text-base leading-[1.75] text-muted">
+                With 3 years in product design I&apos;ve had the chance to work
+                on complex problems across the commercial trades and CRM space,
+                using data, AI and deep customer research to design products
+                that real teams depend on every day.
               </p>
             </div>
           </div>
@@ -68,10 +68,8 @@ export default function Home() {
         <div className="flex flex-col gap-8 max-w-[1440px] mx-auto">
           <div className="flex flex-col gap-4">
             <h2 className="text-2xl md:text-4xl leading-[1.37] text-dark">My projects</h2>
-            <p className="text-base leading-[1.37] text-muted max-w-[476px]">
-              A small selection of the projects I&apos;ve worked on over my
-              career. You can view a full display of my work on the
-              &quot;Projects&quot; tab.
+            <p className="text-base leading-[1.37] text-muted max-w-[700px]">
+              A selection of projects I&apos;ve worked on. Head to the projects tab for the full list.
             </p>
           </div>
 
@@ -144,9 +142,8 @@ export default function Home() {
         <div className="flex flex-col gap-8 max-w-[1440px] mx-auto">
           <div className="flex flex-col gap-4">
             <h2 className="text-2xl md:text-4xl leading-[1.37] text-dark">Peer feedback</h2>
-            <p className="text-base leading-[1.37] text-muted max-w-[476px]">
-              Real feedback from mentors and peers who I&apos;ve worked with
-              over the years.
+            <p className="text-base leading-[1.37] text-muted max-w-[700px]">
+              Real feedback from mentors and peers who I&apos;ve worked with over the years.
             </p>
           </div>
 

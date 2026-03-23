@@ -47,7 +47,7 @@ export default function PhotoCarousel() {
           {photos.map((photo, i) => (
             <div
               key={i}
-              className={`relative h-[240px] md:h-[345px] rounded-[24px] md:rounded-[36px] overflow-hidden mr-4 md:mr-9 ${
+              className={`relative h-[240px] md:h-[345px] rounded-2xl overflow-hidden mr-4 md:mr-9 ${
                 photo.portrait
                   ? "flex-[0_0_180px] md:flex-[0_0_259px]"
                   : "flex-[0_0_320px] md:flex-[0_0_460px]"

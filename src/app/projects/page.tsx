@@ -75,8 +75,7 @@ export default function Projects() {
               Selected Projects
             </h2>
             <p className="text-base leading-[1.37] text-muted max-w-[510px]">
-              A view of some of my proudest work I&apos;ve accomplished over the
-              years.
+              A collection of projects I&apos;ve led and shipped over the past few years.
             </p>
           </div>
 

@@ -34,7 +34,7 @@ export default function About() {
         <div className="flex flex-col gap-8 max-w-[1440px] mx-auto">
           <div className="flex flex-col md:flex-row gap-9">
             {/* Left - Image */}
-            <div className="relative w-full md:w-[721px] h-[300px] md:h-[500px] shrink-0 rounded-[24px] md:rounded-[36px] overflow-hidden">
+            <div className="relative w-full md:w-[721px] h-[300px] md:h-[500px] shrink-0 rounded-2xl overflow-hidden">
               <Image
                 src="/images/main photo.PNG"
                 alt="Jeremie Premi"
@@ -50,14 +50,14 @@ export default function About() {
               <h3 className="text-2xl md:text-4xl font-medium leading-[1.37] text-dark">
                 How I got here
               </h3>
-              <p className="text-base md:text-xl leading-[1.4] text-muted">
+              <p className="text-base md:text-[18px] leading-[1.75] text-muted">
                 I&apos;m a product designer specializing in B2B enterprise software
                 with a track record of leading complex products from strategy and
                 discovery through to delivery and results. Before product design I
                 spent 10 years in fine dining kitchens that built grit, a deep
                 obsession with the customer experience and a high bar for quality.
               </p>
-              <p className="text-base md:text-xl leading-[1.4] text-muted">
+              <p className="text-base md:text-[18px] leading-[1.75] text-muted">
                 Over the past 3 years I&apos;ve owned initiatives end-to-end
                 across sales products including CRMs, estimation and quoting tools
                 in the commercial trades space. I take on PM responsibilities when
@@ -97,7 +97,7 @@ export default function About() {
                 <span className="text-base font-medium text-dark/70">
                   Fini
                 </span>
-                <p className="text-base leading-[1.75] text-muted max-w-[560px]">
+                <p className="text-base md:text-[18px] leading-[1.75] text-muted max-w-[560px]">
                   Worked as one of two designers on a SaaS mobile app with
                   the goal of helping the company secure <span className="font-semibold text-dark">$350K in seed funding</span>.
                   Designed a payment integrated event booking flow that
@@ -123,12 +123,12 @@ export default function About() {
                 <span className="text-base font-medium text-dark/70">
                   Thrillx &middot; Design Agency
                 </span>
-                <p className="text-base leading-[1.75] text-muted max-w-[560px]">
+                <p className="text-base md:text-[18px] leading-[1.75] text-muted max-w-[560px]">
                   Led website redesign and rebranding projects for a B2B
                   staffing agency and a CBD e-commerce brand. The staffing
                   redesign drove a <span className="font-semibold text-dark">164% increase</span> in qualified leads, <span className="font-semibold text-dark">63%
                   increase</span> in time on page and a <span className="font-semibold text-dark">22% decrease</span> in bounce rate.
-                  The CBD redesign drove a <span className="font-semibold text-dark">126% increase</span> in conversions and a
+                  The CBD redesign drove a <span className="font-semibold text-dark">126% increase</span> in conversions and a {" "}
                   <span className="font-semibold text-dark">41% increase</span> in average order value.
                 </p>
               </div>
@@ -149,7 +149,7 @@ export default function About() {
                 <span className="text-base font-medium text-dark/70">
                   BuildOps
                 </span>
-                <p className="text-base leading-[1.75] text-muted max-w-[560px]">
+                <p className="text-base md:text-[18px] leading-[1.75] text-muted max-w-[560px]">
                   Lead complex sales products end-to-end as the primary
                   designer across the commercial trades space, including CRMs,
                   estimation and quoting tools. Regularly step into PM
