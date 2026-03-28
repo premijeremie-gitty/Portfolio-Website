@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const projects = [
   {
-    image: "/images/project1-mockup.png",
+    image: "/images/Hero image CRM+.png",
     title: "CRM+: Complete re-platform of an existing product",
     description:
       "Lead designer working the 0-1 design of a CRM for the trades, increasing revenue by $750K, enabling the go live of a 1 million dollar customer and 85 tenants onboarded in 12 months.",
@@ -14,7 +14,7 @@ const projects = [
       "Lead designer working the 0-1 design of a CRM for the trades, increasing revenue by $750K, enabling the go live of a 1 million dollar customer and 85 tenants onboarded in 12 months.",
   },
   {
-    image: "/images/project1-mockup.png",
+    image: "/images/Hero image CRM+.png",
     title: "CRM+: Complete re-platform of an existing product",
     description:
       "Lead designer working the 0-1 design of a CRM for the trades, increasing revenue by $750K, enabling the go live of a 1 million dollar customer and 85 tenants onboarded in 12 months.",
@@ -26,7 +26,7 @@ const projects = [
       "Lead designer working the 0-1 design of a CRM for the trades, increasing revenue by $750K, enabling the go live of a 1 million dollar customer and 85 tenants onboarded in 12 months.",
   },
   {
-    image: "/images/project1-mockup.png",
+    image: "/images/Hero image CRM+.png",
     title: "CRM+: Complete re-platform of an existing product",
     description:
       "Lead designer working the 0-1 design of a CRM for the trades, increasing revenue by $750K, enabling the go live of a 1 million dollar customer and 85 tenants onboarded in 12 months.",

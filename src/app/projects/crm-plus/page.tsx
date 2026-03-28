@@ -1,4 +1,9 @@
+"use client";
+
 import Image from "next/image";
+import { useState, useEffect, useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
 const metrics = [
   { value: "$1M+", label: "Customer go-live unblocked" },
@@ -12,9 +17,131 @@ const projectDetails = [
   { label: "Company", value: "BuildOps" },
 ];
 
+// Image groups per solution block
+const solutionGroups: Record<string, string[]> = {
+  block1: ["/images/New sales process page.png", "/images/new opp type page.png"],
+  block2: ["/images/Kanban.png", "/images/Opportunity detail page.png"],
+  block3: ["/images/Preferences.png", "/images/opp detail page activity 2.png", "/images/Opp detail with activity.png"],
+  block4: ["/images/Estimation.png", "/images/opp detail estimate.png"],
+  block5: ["/images/Templates.png", "/images/Generate proposal.png", "/images/Opp detail proposal.png"],
+  block6: ["/images/Won opps.png"],
+};
+
 export default function CRMPlusCaseStudy() {
+  const [lightboxGroup, setLightboxGroup] = useState<string | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, startIndex: lightboxIndex, duration: 15, watchDrag: false }
+  );
+
+  const currentImages = lightboxGroup ? solutionGroups[lightboxGroup] : [];
+
+  const openLightbox = (group: string, index: number) => {
+    setLightboxGroup(group);
+    setLightboxIndex(index);
+  };
+
+  const closeLightbox = () => {
+    setLightboxGroup(null);
+    setLightboxIndex(0);
+  };
+
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+
+  // Sync embla starting slide when lightbox opens
+  useEffect(() => {
+    if (emblaApi && lightboxGroup) {
+      emblaApi.scrollTo(lightboxIndex, true);
+    }
+  }, [emblaApi, lightboxGroup, lightboxIndex]);
+
+  // Track active slide
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => setLightboxIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on("select", onSelect);
+    return () => { emblaApi.off("select", onSelect); };
+  }, [emblaApi]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowRight" && emblaApi) emblaApi.scrollNext();
+      if (e.key === "ArrowLeft" && emblaApi) emblaApi.scrollPrev();
+    };
+    if (lightboxGroup) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    }
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [lightboxGroup, emblaApi]);
+
   return (
     <div className="flex flex-col">
+      {/* Lightbox Gallery */}
+      {lightboxGroup && currentImages.length > 0 && (
+        <div
+          className="fixed inset-0 z-50 bg-black/85 flex items-center justify-center"
+          onClick={closeLightbox}
+        >
+          {/* Close button */}
+          <button
+            onClick={closeLightbox}
+            className="absolute top-6 left-6 z-20 w-10 h-10 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center cursor-pointer transition-colors"
+          >
+            <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+          </button>
+
+          {/* Counter */}
+          <div className="absolute top-6 right-6 z-20 bg-white/15 text-white text-base font-semibold px-4 py-2 rounded-full">
+            {lightboxIndex + 1} / {currentImages.length}
+          </div>
+
+          {/* Embla Carousel with arrows */}
+          <div className="relative w-full h-full p-6 md:p-16 pointer-events-none">
+            <div className="relative h-full">
+              <div className="overflow-hidden h-full pointer-events-auto" ref={emblaRef}>
+                <div className="flex h-full">
+                  {currentImages.map((src, i) => (
+                    <div key={i} className="relative flex-[0_0_100%] h-full">
+                      <Image
+                        src={src}
+                        alt={`Screen ${i + 1}`}
+                        fill
+                        sizes="100vw"
+                        className="object-contain"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* Left arrow */}
+              {currentImages.length > 1 && (
+                <button
+                  onClick={(e) => { e.stopPropagation(); scrollPrev(); }}
+                  className="absolute left-[12%] top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/30 hover:bg-white/50 flex items-center justify-center cursor-pointer transition-colors pointer-events-auto"
+                >
+                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
+                </button>
+              )}
+              {/* Right arrow */}
+              {currentImages.length > 1 && (
+                <button
+                  onClick={(e) => { e.stopPropagation(); scrollNext(); }}
+                  className="absolute right-[12%] top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/30 hover:bg-white/50 flex items-center justify-center cursor-pointer transition-colors pointer-events-auto"
+                >
+                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
       {/* Navigation */}
       <nav className="flex items-center px-5 md:px-12 py-6 border-b border-border">
         <div className="flex items-center justify-between w-full">
@@ -40,15 +167,17 @@ export default function CRMPlusCaseStudy() {
       </nav>
 
       {/* Hero Image — Full bleed */}
-      <section className="relative w-full h-[300px] md:h-[560px]">
-        <Image
-          src="/images/project1-mockup.png"
-          alt="CRM+ hero"
-          fill
-          sizes="100vw"
-          className="object-cover"
-          priority
-        />
+      <section className="w-full h-[300px] md:h-[560px] bg-light-bg px-5 md:px-12 py-8 md:py-12">
+        <div className="relative w-full h-full">
+          <Image
+            src="/images/Hero image CRM+.png"
+            alt="CRM+ hero"
+            fill
+            sizes="100vw"
+            className="object-contain"
+            priority
+          />
+        </div>
       </section>
 
       {/* Hero */}
@@ -166,12 +295,12 @@ export default function CRMPlusCaseStudy() {
       </section>
 
       {/* Solution */}
-      <section className="px-5 md:px-12 py-10 md:py-16">
+      <section className="px-5 md:px-12 pt-10 md:pt-16 pb-20 md:pb-32">
         <div className="flex flex-col max-w-[1440px] mx-auto">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-4">
               <h2 className="text-[28px] md:text-[40px] font-semibold leading-[1.2] text-dark">
-                Solution
+                The solution
               </h2>
               <p className="text-lg leading-[1.6] text-muted max-w-[680px]">
                 Below are solutions that we launched with to the key opportunities
@@ -180,20 +309,11 @@ export default function CRMPlusCaseStudy() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-16 md:gap-[88px] mt-16 md:mt-[60px]">
-            {/* Solution Block 1 */}
-            <div className="flex flex-col gap-3">
-              <div className="relative w-full h-[250px] md:h-[500px] rounded-2xl overflow-hidden bg-light-bg">
-                <Image
-                  src="/images/project1-mockup.png"
-                  alt="Robust profiles"
-                  fill
-                  sizes="100vw"
-                  className="object-cover"
-                />
-              </div>
+          <div className="flex flex-col gap-24 md:gap-[134px] mt-16 md:mt-[60px]">
+            {/* Solution Block 1 — Double */}
+            <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-2 max-w-[1100px]">
-                <h3 className="text-[20px] font-medium text-dark">
+                <h3 className="text-[24px] font-bold text-dark">
                   Robust profiles
                 </h3>
                 <p className="text-base leading-[1.75] text-muted">
@@ -203,21 +323,45 @@ export default function CRMPlusCaseStudy() {
                   informed assignment decisions.
                 </p>
               </div>
+              <div className="flex flex-col md:flex-row gap-6">
+                <div
+                  className="relative w-full md:w-1/2 h-[280px] md:h-[480px] rounded-2xl overflow-hidden bg-[#d2d6db] px-6 py-8 md:px-8 md:py-12 cursor-pointer group"
+                  onClick={() => openLightbox("block1", 0)}
+                >
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/images/New sales process page.png"
+                      alt="New sales process page"
+                      fill
+                      sizes="50vw"
+                      className="object-contain"
+                    />
+                  </div>
+                  <svg className="absolute top-3 right-3 w-5 h-5 text-[#ee5a32] opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9m11.25-5.25v4.5m0-4.5h-4.5m4.5 0L15 9m-11.25 11.25v-4.5m0 4.5h4.5m-4.5 0L9 15m11.25 5.25v-4.5m0 4.5h-4.5m4.5 0L15 15" /></svg>
+                </div>
+                <div
+                  className="relative w-full md:w-1/2 h-[280px] md:h-[480px] rounded-2xl overflow-hidden bg-[#d2d6db] px-6 py-8 md:px-8 md:py-12 cursor-pointer group"
+                  onClick={() => openLightbox("block1", 1)}
+                >
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/images/new opp type page.png"
+                      alt="New opportunity type page"
+                      fill
+                      sizes="50vw"
+                      className="object-contain"
+                    />
+                  </div>
+                  <svg className="absolute top-3 right-3 w-5 h-5 text-[#ee5a32] opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9m11.25-5.25v4.5m0-4.5h-4.5m4.5 0L15 9m-11.25 11.25v-4.5m0 4.5h4.5m-4.5 0L9 15m11.25 5.25v-4.5m0 4.5h-4.5m4.5 0L15 15" /></svg>
+                </div>
+              </div>
             </div>
 
-            {/* Solution Block 2 */}
-            <div className="flex flex-col gap-3">
-              <div className="relative w-full h-[250px] md:h-[500px] rounded-2xl overflow-hidden bg-light-bg">
-                <Image
-                  src="/images/project2-mockup.png"
-                  alt="Streamlined pipeline management"
-                  fill
-                  sizes="100vw"
-                  className="object-cover"
-                />
-              </div>
+
+            {/* Solution Block 2 — Double */}
+            <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-2 max-w-[1100px]">
-                <h3 className="text-[20px] font-medium text-dark">
+                <h3 className="text-[24px] font-bold text-dark">
                   Streamlined pipeline management
                 </h3>
                 <p className="text-base leading-[1.75] text-muted">
@@ -226,33 +370,46 @@ export default function CRMPlusCaseStudy() {
                   Nec elit suspendisse massa sollicitudin lectus.
                 </p>
               </div>
-            </div>
-
-            {/* Solution Block 3 — Two images side by side */}
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="relative w-full md:w-1/2 h-[250px] md:h-[400px] rounded-2xl overflow-hidden bg-light-bg">
-                  <Image
-                    src="/images/project1-mockup.png"
-                    alt="Intelligent reporting dashboard"
-                    fill
-                    sizes="50vw"
-                    className="object-cover"
-                  />
+              <div className="flex flex-col md:flex-row gap-6">
+                <div
+                  className="relative w-full md:w-1/2 h-[280px] md:h-[480px] rounded-2xl overflow-hidden bg-[#d2d6db] px-6 py-8 md:px-8 md:py-12 cursor-pointer group"
+                  onClick={() => openLightbox("block2", 0)}
+                >
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/images/Kanban.png"
+                      alt="Kanban view"
+                      fill
+                      sizes="50vw"
+                      className="object-contain"
+                    />
+                  </div>
+                  <svg className="absolute top-3 right-3 w-5 h-5 text-[#ee5a32] opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9m11.25-5.25v4.5m0-4.5h-4.5m4.5 0L15 9m-11.25 11.25v-4.5m0 4.5h4.5m-4.5 0L9 15m11.25 5.25v-4.5m0 4.5h-4.5m4.5 0L15 15" /></svg>
                 </div>
-                <div className="relative w-full md:w-1/2 h-[250px] md:h-[400px] rounded-2xl overflow-hidden bg-light-bg">
-                  <Image
-                    src="/images/project2-mockup.png"
-                    alt="Intelligent reporting dashboard detail"
-                    fill
-                    sizes="50vw"
-                    className="object-cover"
-                  />
+                <div
+                  className="relative w-full md:w-1/2 h-[280px] md:h-[480px] rounded-2xl overflow-hidden bg-[#d2d6db] px-6 py-8 md:px-8 md:py-12 cursor-pointer group"
+                  onClick={() => openLightbox("block2", 1)}
+                >
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/images/Opportunity detail page.png"
+                      alt="Opportunity detail page"
+                      fill
+                      sizes="50vw"
+                      className="object-contain"
+                    />
+                  </div>
+                  <svg className="absolute top-3 right-3 w-5 h-5 text-[#ee5a32] opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9m11.25-5.25v4.5m0-4.5h-4.5m4.5 0L15 9m-11.25 11.25v-4.5m0 4.5h4.5m-4.5 0L9 15m11.25 5.25v-4.5m0 4.5h-4.5m4.5 0L15 15" /></svg>
                 </div>
               </div>
+            </div>
+
+
+            {/* Solution Block 3 — 2 + 1 layout */}
+            <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-2 max-w-[1100px]">
-                <h3 className="text-[20px] font-medium text-dark">
-                  Intelligent reporting dashboard
+                <h3 className="text-[24px] font-bold text-dark">
+                  Activity tracking &amp; preferences
                 </h3>
                 <p className="text-base leading-[1.75] text-muted">
                   Lorem ipsum dolor sit amet consectetur. Adipiscing mi maecenas
@@ -260,22 +417,65 @@ export default function CRMPlusCaseStudy() {
                   Nec elit suspendisse massa sollicitudin lectus.
                 </p>
               </div>
+              <div className="flex flex-col gap-6">
+                {/* Two images side by side */}
+                <div className="flex flex-col md:flex-row gap-6">
+                  <div
+                    className="relative w-full md:w-1/2 h-[280px] md:h-[480px] rounded-2xl overflow-hidden bg-[#d2d6db] px-6 py-8 md:px-8 md:py-12 cursor-pointer group"
+                    onClick={() => openLightbox("block3", 0)}
+                  >
+                    <div className="relative w-full h-full">
+                      <Image
+                        src="/images/Preferences.png"
+                        alt="Preferences"
+                        fill
+                        sizes="50vw"
+                        className="object-contain"
+                      />
+                    </div>
+                    <svg className="absolute top-3 right-3 w-5 h-5 text-[#ee5a32] opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9m11.25-5.25v4.5m0-4.5h-4.5m4.5 0L15 9m-11.25 11.25v-4.5m0 4.5h4.5m-4.5 0L9 15m11.25 5.25v-4.5m0 4.5h-4.5m4.5 0L15 15" /></svg>
+                  </div>
+                  <div
+                    className="relative w-full md:w-1/2 h-[280px] md:h-[480px] rounded-2xl overflow-hidden bg-[#d2d6db] px-6 py-8 md:px-8 md:py-12 cursor-pointer group"
+                    onClick={() => openLightbox("block3", 1)}
+                  >
+                    <div className="relative w-full h-full">
+                      <Image
+                        src="/images/opp detail page activity 2.png"
+                        alt="Opportunity detail with activity"
+                        fill
+                        sizes="50vw"
+                        className="object-contain"
+                      />
+                    </div>
+                    <svg className="absolute top-3 right-3 w-5 h-5 text-[#ee5a32] opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9m11.25-5.25v4.5m0-4.5h-4.5m4.5 0L15 9m-11.25 11.25v-4.5m0 4.5h4.5m-4.5 0L9 15m11.25 5.25v-4.5m0 4.5h-4.5m4.5 0L15 15" /></svg>
+                  </div>
+                </div>
+                {/* Full-width image */}
+                <div
+                  className="relative w-full h-[280px] md:h-[480px] rounded-2xl overflow-hidden bg-[#d2d6db] px-6 py-8 md:px-8 md:py-12 cursor-pointer group"
+                  onClick={() => openLightbox("block3", 2)}
+                >
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/images/Opp detail with activity.png"
+                      alt="Opportunity detail with activity"
+                      fill
+                      sizes="100vw"
+                      className="object-contain"
+                    />
+                  </div>
+                  <svg className="absolute top-3 right-3 w-5 h-5 text-[#ee5a32] opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9m11.25-5.25v4.5m0-4.5h-4.5m4.5 0L15 9m-11.25 11.25v-4.5m0 4.5h4.5m-4.5 0L9 15m11.25 5.25v-4.5m0 4.5h-4.5m4.5 0L15 15" /></svg>
+                </div>
+              </div>
             </div>
 
-            {/* Solution Block 4 */}
-            <div className="flex flex-col gap-3">
-              <div className="relative w-full h-[250px] md:h-[500px] rounded-2xl overflow-hidden bg-light-bg">
-                <Image
-                  src="/images/project2-mockup.png"
-                  alt="Advanced search and filtering"
-                  fill
-                  sizes="100vw"
-                  className="object-cover"
-                />
-              </div>
+
+            {/* Solution Block 4 — Double */}
+            <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-2 max-w-[1100px]">
-                <h3 className="text-[20px] font-medium text-dark">
-                  Advanced search and filtering
+                <h3 className="text-[24px] font-bold text-dark">
+                  Estimation
                 </h3>
                 <p className="text-base leading-[1.75] text-muted">
                   Lorem ipsum dolor sit amet consectetur. Adipiscing mi maecenas
@@ -283,7 +483,136 @@ export default function CRMPlusCaseStudy() {
                   Nec elit suspendisse massa sollicitudin lectus.
                 </p>
               </div>
+              <div className="flex flex-col md:flex-row gap-6">
+                <div
+                  className="relative w-full md:w-1/2 h-[280px] md:h-[480px] rounded-2xl overflow-hidden bg-[#d2d6db] px-6 py-8 md:px-8 md:py-12 cursor-pointer group"
+                  onClick={() => openLightbox("block4", 0)}
+                >
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/images/Estimation.png"
+                      alt="Estimation"
+                      fill
+                      sizes="50vw"
+                      className="object-contain"
+                    />
+                  </div>
+                  <svg className="absolute top-3 right-3 w-5 h-5 text-[#ee5a32] opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9m11.25-5.25v4.5m0-4.5h-4.5m4.5 0L15 9m-11.25 11.25v-4.5m0 4.5h4.5m-4.5 0L9 15m11.25 5.25v-4.5m0 4.5h-4.5m4.5 0L15 15" /></svg>
+                </div>
+                <div
+                  className="relative w-full md:w-1/2 h-[280px] md:h-[480px] rounded-2xl overflow-hidden bg-[#d2d6db] px-6 py-8 md:px-8 md:py-12 cursor-pointer group"
+                  onClick={() => openLightbox("block4", 1)}
+                >
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/images/opp detail estimate.png"
+                      alt="Opportunity detail estimation"
+                      fill
+                      sizes="50vw"
+                      className="object-contain"
+                    />
+                  </div>
+                  <svg className="absolute top-3 right-3 w-5 h-5 text-[#ee5a32] opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9m11.25-5.25v4.5m0-4.5h-4.5m4.5 0L15 9m-11.25 11.25v-4.5m0 4.5h4.5m-4.5 0L9 15m11.25 5.25v-4.5m0 4.5h-4.5m4.5 0L15 15" /></svg>
+                </div>
+              </div>
             </div>
+
+
+            {/* Solution Block 5 — 2 + 1 layout */}
+            <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-2 max-w-[1100px]">
+                <h3 className="text-[24px] font-bold text-dark">
+                  Proposals &amp; templates
+                </h3>
+                <p className="text-base leading-[1.75] text-muted">
+                  Lorem ipsum dolor sit amet consectetur. Adipiscing mi maecenas
+                  habitant et ultrices velit. Egestas sed dignissim blandit nunc.
+                  Nec elit suspendisse massa sollicitudin lectus.
+                </p>
+              </div>
+              <div className="flex flex-col gap-6">
+                {/* Two images side by side */}
+                <div className="flex flex-col md:flex-row gap-6">
+                  <div
+                    className="relative w-full md:w-1/2 h-[280px] md:h-[480px] rounded-2xl overflow-hidden bg-[#d2d6db] px-6 py-8 md:px-8 md:py-12 cursor-pointer group"
+                    onClick={() => openLightbox("block5", 0)}
+                  >
+                    <div className="relative w-full h-full">
+                      <Image
+                        src="/images/Templates.png"
+                        alt="Templates"
+                        fill
+                        sizes="50vw"
+                        className="object-contain"
+                      />
+                    </div>
+                    <svg className="absolute top-3 right-3 w-5 h-5 text-[#ee5a32] opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9m11.25-5.25v4.5m0-4.5h-4.5m4.5 0L15 9m-11.25 11.25v-4.5m0 4.5h4.5m-4.5 0L9 15m11.25 5.25v-4.5m0 4.5h-4.5m4.5 0L15 15" /></svg>
+                  </div>
+                  <div
+                    className="relative w-full md:w-1/2 h-[280px] md:h-[480px] rounded-2xl overflow-hidden bg-[#d2d6db] px-6 py-8 md:px-8 md:py-12 cursor-pointer group"
+                    onClick={() => openLightbox("block5", 1)}
+                  >
+                    <div className="relative w-full h-full">
+                      <Image
+                        src="/images/Generate proposal.png"
+                        alt="Generate proposal"
+                        fill
+                        sizes="50vw"
+                        className="object-contain"
+                      />
+                    </div>
+                    <svg className="absolute top-3 right-3 w-5 h-5 text-[#ee5a32] opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9m11.25-5.25v4.5m0-4.5h-4.5m4.5 0L15 9m-11.25 11.25v-4.5m0 4.5h4.5m-4.5 0L9 15m11.25 5.25v-4.5m0 4.5h-4.5m4.5 0L15 15" /></svg>
+                  </div>
+                </div>
+                {/* Full-width image */}
+                <div
+                  className="relative w-full h-[280px] md:h-[480px] rounded-2xl overflow-hidden bg-[#d2d6db] px-6 py-8 md:px-8 md:py-12 cursor-pointer group"
+                  onClick={() => openLightbox("block5", 2)}
+                >
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/images/Opp detail proposal.png"
+                      alt="Proposal opportunity detail"
+                      fill
+                      sizes="100vw"
+                      className="object-contain"
+                    />
+                  </div>
+                  <svg className="absolute top-3 right-3 w-5 h-5 text-[#ee5a32] opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9m11.25-5.25v4.5m0-4.5h-4.5m4.5 0L15 9m-11.25 11.25v-4.5m0 4.5h4.5m-4.5 0L9 15m11.25 5.25v-4.5m0 4.5h-4.5m4.5 0L15 15" /></svg>
+                </div>
+              </div>
+            </div>
+
+
+            {/* Block 6: Single image */}
+            <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-2 max-w-[1100px]">
+                <h3 className="text-[24px] font-bold text-dark">
+                  Won opportunities
+                </h3>
+                <p className="text-base leading-[1.75] text-muted">
+                  Lorem ipsum dolor sit amet consectetur. Adipiscing mi maecenas
+                  habitant et ultrices velit. Egestas sed dignissim blandit nunc.
+                  Nec elit suspendisse massa sollicitudin lectus.
+                </p>
+              </div>
+              <div
+                className="relative w-full h-[280px] md:h-[480px] rounded-2xl overflow-hidden bg-[#d2d6db] px-6 py-8 md:px-8 md:py-12 cursor-pointer group"
+                onClick={() => openLightbox("block6", 0)}
+              >
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/images/Won opps.png"
+                    alt="Won opportunities"
+                    fill
+                    sizes="100vw"
+                    className="object-contain"
+                  />
+                </div>
+                <svg className="absolute top-3 right-3 w-5 h-5 text-[#ee5a32] opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9m11.25-5.25v4.5m0-4.5h-4.5m4.5 0L15 9m-11.25 11.25v-4.5m0 4.5h4.5m-4.5 0L9 15m11.25 5.25v-4.5m0 4.5h-4.5m4.5 0L15 15" /></svg>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

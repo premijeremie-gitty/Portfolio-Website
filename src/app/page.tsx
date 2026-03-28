@@ -42,15 +42,14 @@ export default function Home() {
               />
               <h1 className="text-[28px] md:text-[44px] leading-[1.37] text-dark">
                 I&apos;m Jeremie, a product designer specializing in B2B
-                enterprise sales products, with a track record of shaping
-                strategy, building 0-1 product and driving measurable
-                outcomes.
+                enterprise sales products, with a track record of building
+                0&rarr;1 products that drive measurable outcomes.
               </h1>
               <p className="text-base leading-[1.75] text-muted">
-                With 3 years in product design I&apos;ve had the chance to work
+                With 3 years in product design, I&apos;ve had the chance to work
                 on complex problems across the commercial trades and CRM space,
-                using data, AI and deep customer research to design products
-                that real teams depend on every day.
+                using data and AI to design products that real teams depend on
+                every day to run their business.
               </p>
             </div>
           </div>
@@ -76,14 +75,16 @@ export default function Home() {
           <div className="flex flex-col md:flex-row gap-10">
             {/* Project Card 1 */}
             <a href="/projects/crm-plus" className="flex flex-col gap-5 flex-1 group cursor-pointer">
-              <div className="relative h-[250px] md:h-[442px] rounded-2xl overflow-hidden">
-                <Image
-                  src="/images/project1-mockup.png"
-                  alt="CRM+ project mockup"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
+              <div className="relative h-[250px] md:h-[442px] rounded-2xl overflow-hidden bg-[#d2d6db] p-8 md:p-12">
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/images/Hero image CRM+.png"
+                    alt="CRM+ project mockup"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-contain transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
               </div>
               <div className="flex flex-col gap-3">
                 <h3 className="text-2xl font-medium leading-[1.37] text-dark">

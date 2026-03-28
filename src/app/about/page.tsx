@@ -82,29 +82,26 @@ export default function About() {
             {/* Vertical line */}
             <div className="absolute left-[7px] top-2 bottom-2 w-[2px] bg-border" />
 
-            {/* 2023 - Fini */}
+            {/* 2024-Present - BuildOps */}
             <div className="relative flex gap-5 md:gap-10 pb-16">
               <div className="flex flex-col items-center shrink-0">
                 <div className="w-4 h-4 rounded-full bg-[#ee5a32] z-10" />
               </div>
               <div className="flex flex-col gap-2 -mt-1">
                 <span className="text-sm font-semibold text-[#ee5a32]">
-                  2023 (July &ndash; December)
+                  2024 &ndash; Present
                 </span>
                 <h3 className="text-xl md:text-2xl font-medium leading-[1.37] text-dark">
-                  Product Design Intern
+                  Product Designer
                 </h3>
                 <span className="text-base font-medium text-dark/70">
-                  Fini
+                  BuildOps
                 </span>
-                <p className="text-base md:text-[18px] leading-[1.75] text-muted max-w-[560px]">
-                  Worked as one of two designers on a SaaS mobile app with
-                  the goal of helping the company secure <span className="font-semibold text-dark">$350K in seed funding</span>.
-                  Designed a payment integrated event booking flow that
-                  contributed to a <span className="font-semibold text-dark">70% increase</span> in new users, and a Shopify
-                  integrated in-app marketplace driving additional revenue from
-                  brand partners and <span className="font-semibold text-dark">1,500 active members</span>.
-                </p>
+                <ul className="text-base md:text-[18px] leading-[1.75] text-muted max-w-[560px] list-disc pl-5 flex flex-col gap-2">
+                  <li>Lead end-to-end design for CRM, estimation, and quoting products across the commercial trades space</li>
+                  <li>Designed a CRM for the trades from 0&rarr;1, helping land a <span className="font-semibold text-dark">$1M+ strategic customer</span> and driving <span className="font-semibold text-dark">$750K+ in new ARR</span> contributing to expansion revenue goals</li>
+                  <li>Integrate AI across my research and design process, using tools like Claude to build fast prototypes and ship real enhancements on the product</li>
+                </ul>
               </div>
             </div>
 
@@ -123,41 +120,33 @@ export default function About() {
                 <span className="text-base font-medium text-dark/70">
                   Thrillx &middot; Design Agency
                 </span>
-                <p className="text-base md:text-[18px] leading-[1.75] text-muted max-w-[560px]">
-                  Led website redesign and rebranding projects for a B2B
-                  staffing agency and a CBD e-commerce brand. The staffing
-                  redesign drove a <span className="font-semibold text-dark">164% increase</span> in qualified leads, <span className="font-semibold text-dark">63%
-                  increase</span> in time on page and a <span className="font-semibold text-dark">22% decrease</span> in bounce rate.
-                  The CBD redesign drove a <span className="font-semibold text-dark">126% increase</span> in conversions and a {" "}
-                  <span className="font-semibold text-dark">41% increase</span> in average order value.
-                </p>
+                <ul className="text-base md:text-[18px] leading-[1.75] text-muted max-w-[560px] list-disc pl-5 flex flex-col gap-2">
+                  <li>Led redesign for a B2B staffing agency: <span className="font-semibold text-dark">164% increase</span> in qualified leads, <span className="font-semibold text-dark">63%</span> more time on page</li>
+                  <li>Redesigned a CBD e-commerce brand: <span className="font-semibold text-dark">126% increase</span> in conversions, <span className="font-semibold text-dark">41%</span> higher AOV</li>
+                </ul>
               </div>
             </div>
 
-            {/* 2024-2026 - BuildOps */}
+            {/* 2023 - Fini */}
             <div className="relative flex gap-5 md:gap-10">
               <div className="flex flex-col items-center shrink-0">
                 <div className="w-4 h-4 rounded-full bg-[#ee5a32] z-10" />
               </div>
               <div className="flex flex-col gap-2 -mt-1">
                 <span className="text-sm font-semibold text-[#ee5a32]">
-                  2024 &ndash; Present
+                  2023 (July &ndash; December)
                 </span>
                 <h3 className="text-xl md:text-2xl font-medium leading-[1.37] text-dark">
-                  Product Designer
+                  Product Design Intern
                 </h3>
                 <span className="text-base font-medium text-dark/70">
-                  BuildOps
+                  Fini
                 </span>
-                <p className="text-base md:text-[18px] leading-[1.75] text-muted max-w-[560px]">
-                  Lead complex sales products end-to-end as the primary
-                  designer across the commercial trades space, including CRMs,
-                  estimation and quoting tools. Regularly step into PM
-                  responsibilities, writing PRDs, contributing to roadmap
-                  planning and product strategy. The work has driven real
-                  results, including <span className="font-semibold text-dark">$750K+ in new ARR</span> and getting a <span className="font-semibold text-dark">$1M+
-                  strategic customer</span> live.
-                </p>
+                <ul className="text-base md:text-[18px] leading-[1.75] text-muted max-w-[560px] list-disc pl-5 flex flex-col gap-2">
+                  <li>Designed payment-integrated booking flow that drove a <span className="font-semibold text-dark">70% increase</span> in new users</li>
+                  <li>Built Shopify-integrated marketplace with <span className="font-semibold text-dark">1,500 active members</span> and new revenue from brand partners</li>
+                  <li>Contributed to securing <span className="font-semibold text-dark">$350K in seed funding</span></li>
+                </ul>
               </div>
             </div>
           </div>
