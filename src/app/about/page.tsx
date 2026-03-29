@@ -36,7 +36,7 @@ export default function About() {
             {/* Left - Image */}
             <div className="relative w-full md:w-[721px] h-[300px] md:h-[500px] shrink-0 rounded-2xl overflow-hidden">
               <Image
-                src="/images/main photo.PNG"
+                src="/images/about/main photo.PNG"
                 alt="Jeremie Premi"
                 fill
                 sizes="(max-width: 768px) 100vw, 721px"
@@ -92,15 +92,12 @@ export default function About() {
                   2024 &ndash; Present
                 </span>
                 <h3 className="text-xl md:text-2xl font-medium leading-[1.37] text-dark">
-                  Product Designer
+                  Product Designer <span className="text-dark/70">&middot; BuildOps</span>
                 </h3>
-                <span className="text-base font-medium text-dark/70">
-                  BuildOps
-                </span>
-                <ul className="text-base md:text-[18px] leading-[1.75] text-muted max-w-[560px] list-disc pl-5 flex flex-col gap-2">
+                <ul className="text-base md:text-[18px] leading-[1.75] text-muted max-w-[560px] list-disc pl-5 flex flex-col gap-4">
                   <li>Lead end-to-end design for CRM, estimation, and quoting products across the commercial trades space</li>
-                  <li>Designed a CRM for the trades from 0&rarr;1, helping land a <span className="font-semibold text-dark">$1M+ strategic customer</span> and driving <span className="font-semibold text-dark">$750K+ in new ARR</span> contributing to expansion revenue goals</li>
-                  <li>Integrate AI across my research and design process, using tools like Claude to build fast prototypes and ship real enhancements on the product</li>
+                  <li>Designed a CRM for the trades from 0&rarr;1, landing a <span className="text-dark">$1M+ strategic customer</span> and driving <span className="text-dark">$750K+ in new ARR</span></li>
+                  <li>Integrate AI into my design process, using tools like Claude to prototype and ship real enhancements</li>
                 </ul>
               </div>
             </div>
@@ -115,14 +112,11 @@ export default function About() {
                   2023 (October &ndash; December)
                 </span>
                 <h3 className="text-xl md:text-2xl font-medium leading-[1.37] text-dark">
-                  Junior Designer
+                  Junior Designer <span className="text-dark/70">&middot; Thrillx</span>
                 </h3>
-                <span className="text-base font-medium text-dark/70">
-                  Thrillx &middot; Design Agency
-                </span>
-                <ul className="text-base md:text-[18px] leading-[1.75] text-muted max-w-[560px] list-disc pl-5 flex flex-col gap-2">
-                  <li>Led redesign for a B2B staffing agency: <span className="font-semibold text-dark">164% increase</span> in qualified leads, <span className="font-semibold text-dark">63%</span> more time on page</li>
-                  <li>Redesigned a CBD e-commerce brand: <span className="font-semibold text-dark">126% increase</span> in conversions, <span className="font-semibold text-dark">41%</span> higher AOV</li>
+                <ul className="text-base md:text-[18px] leading-[1.75] text-muted max-w-[560px] list-disc pl-5 flex flex-col gap-4">
+                  <li>Led redesign for a B2B staffing agency: <span className="text-dark">164% increase</span> in qualified leads, <span className="text-dark">63%</span> more time on page</li>
+                  <li>Redesigned a CBD e-commerce brand: <span className="text-dark">126% increase</span> in conversions, <span className="text-dark">41%</span> higher AOV</li>
                 </ul>
               </div>
             </div>
@@ -137,15 +131,12 @@ export default function About() {
                   2023 (July &ndash; December)
                 </span>
                 <h3 className="text-xl md:text-2xl font-medium leading-[1.37] text-dark">
-                  Product Design Intern
+                  Product Design Intern <span className="text-dark/70">&middot; Fini</span>
                 </h3>
-                <span className="text-base font-medium text-dark/70">
-                  Fini
-                </span>
-                <ul className="text-base md:text-[18px] leading-[1.75] text-muted max-w-[560px] list-disc pl-5 flex flex-col gap-2">
-                  <li>Designed payment-integrated booking flow that drove a <span className="font-semibold text-dark">70% increase</span> in new users</li>
-                  <li>Built Shopify-integrated marketplace with <span className="font-semibold text-dark">1,500 active members</span> and new revenue from brand partners</li>
-                  <li>Contributed to securing <span className="font-semibold text-dark">$350K in seed funding</span></li>
+                <ul className="text-base md:text-[18px] leading-[1.75] text-muted max-w-[560px] list-disc pl-5 flex flex-col gap-4">
+                  <li>Designed payment-integrated booking flow that drove a <span className="text-dark">70% increase</span> in new users</li>
+                  <li>Built Shopify-integrated marketplace with <span className="text-dark">1,500 active members</span> and new revenue from brand partners</li>
+                  <li>Contributed to securing <span className="text-dark">$350K in seed funding</span></li>
                 </ul>
               </div>
             </div>

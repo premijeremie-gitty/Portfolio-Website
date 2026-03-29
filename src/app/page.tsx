@@ -33,7 +33,7 @@ export default function Home() {
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-6">
               <Image
-                src="/images/profile.png"
+                src="/images/home/profile.png"
                 alt="Jeremie Premi"
                 width={108}
                 height={108}
@@ -78,7 +78,7 @@ export default function Home() {
               <div className="relative h-[250px] md:h-[442px] rounded-2xl overflow-hidden bg-[#d2d6db] p-8 md:p-12">
                 <div className="relative w-full h-full">
                   <Image
-                    src="/images/Hero image CRM+.png"
+                    src="/images/crm-plus/Hero image CRM+.png"
                     alt="CRM+ project mockup"
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -88,13 +88,10 @@ export default function Home() {
               </div>
               <div className="flex flex-col gap-3">
                 <h3 className="text-2xl font-medium leading-[1.37] text-dark">
-                  CRM+: Complete re-platform of an existing product
+                  CRM+: Building a CRM for the Trades, 0→1
                 </h3>
                 <p className="text-base leading-[1.75] text-muted">
-                  Lead designer working the 0-1 design of a CRM for the
-                  trades, increasing revenue by $750K, enabling the go live
-                  of a 1 million dollar customer and 85 tenants onboarded in
-                  12 months.
+                  Led the design of a CRM built for the trades and integrated into our core platform, driving expansion revenue growth and enabling a critical strategic customer go-live.
                 </p>
                 <span className="flex items-center gap-2 text-base font-semibold text-dark opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
                   See project
@@ -106,25 +103,24 @@ export default function Home() {
             </a>
 
             {/* Project Card 2 */}
-            <a href="/projects/crm-plus" className="flex flex-col gap-5 flex-1 group cursor-pointer">
-              <div className="relative h-[250px] md:h-[442px] rounded-2xl overflow-hidden">
-                <Image
-                  src="/images/project2-mockup.png"
-                  alt="CRM+ project mockup"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
+            <a href="/projects/multiple-bill-tos" className="flex flex-col gap-5 flex-1 group cursor-pointer">
+              <div className="relative h-[250px] md:h-[442px] rounded-2xl overflow-hidden bg-[#d2d6db] p-8 md:p-12">
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/images/home/Customer page.png"
+                    alt="Customer page project mockup"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-contain transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
               </div>
               <div className="flex flex-col gap-3">
                 <h3 className="text-2xl font-medium leading-[1.37] text-dark">
-                  CRM+: Complete re-platform of an existing product
+                  Multiple Bill To&apos;s
                 </h3>
                 <p className="text-base leading-[1.75] text-muted">
-                  Lead designer working the 0-1 design of a CRM for the
-                  trades, increasing revenue by $750K, enabling the go live
-                  of a 1 million dollar customer and 85 tenants onboarded in
-                  12 months.
+                  A long-requested feature by our largest strategic accounts, enabling commercial shops to manage multiple billing recipients at the account, property, work, and invoice level.
                 </p>
                 <span className="flex items-center gap-2 text-base font-semibold text-dark opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
                   See project

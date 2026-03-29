@@ -2,40 +2,32 @@ import Image from "next/image";
 
 const projects = [
   {
-    image: "/images/Hero image CRM+.png",
-    title: "CRM+: Complete re-platform of an existing product",
+    image: "/images/crm-plus/Hero image CRM+.png",
+    title: "CRM+: Building a CRM for the Trades, 0→1",
     description:
-      "Lead designer working the 0-1 design of a CRM for the trades, increasing revenue by $750K, enabling the go live of a 1 million dollar customer and 85 tenants onboarded in 12 months.",
+      "Led the design of a CRM built for the trades and integrated into our core platform, driving expansion revenue growth and enabling a critical strategic customer go-live.",
+    href: "/projects/crm-plus",
   },
   {
-    image: "/images/project2-mockup.png",
-    title: "CRM+: Complete re-platform of an existing product",
+    image: "/images/home/Customer page.png",
+    title: "Multiple Bill To's",
     description:
-      "Lead designer working the 0-1 design of a CRM for the trades, increasing revenue by $750K, enabling the go live of a 1 million dollar customer and 85 tenants onboarded in 12 months.",
+      "A long-requested feature by our largest strategic accounts, enabling commercial shops to manage multiple billing recipients at the account, property, work, and invoice level.",
+    href: "/projects/multiple-bill-tos",
   },
   {
-    image: "/images/Hero image CRM+.png",
-    title: "CRM+: Complete re-platform of an existing product",
+    image: "",
+    title: "Project coming soon",
     description:
-      "Lead designer working the 0-1 design of a CRM for the trades, increasing revenue by $750K, enabling the go live of a 1 million dollar customer and 85 tenants onboarded in 12 months.",
+      "Details for this project are currently being put together. Check back soon.",
+    href: "#",
   },
   {
-    image: "/images/project2-mockup.png",
-    title: "CRM+: Complete re-platform of an existing product",
+    image: "",
+    title: "Project coming soon",
     description:
-      "Lead designer working the 0-1 design of a CRM for the trades, increasing revenue by $750K, enabling the go live of a 1 million dollar customer and 85 tenants onboarded in 12 months.",
-  },
-  {
-    image: "/images/Hero image CRM+.png",
-    title: "CRM+: Complete re-platform of an existing product",
-    description:
-      "Lead designer working the 0-1 design of a CRM for the trades, increasing revenue by $750K, enabling the go live of a 1 million dollar customer and 85 tenants onboarded in 12 months.",
-  },
-  {
-    image: "/images/project2-mockup.png",
-    title: "CRM+: Complete re-platform of an existing product",
-    description:
-      "Lead designer working the 0-1 design of a CRM for the trades, increasing revenue by $750K, enabling the go live of a 1 million dollar customer and 85 tenants onboarded in 12 months.",
+      "Details for this project are currently being put together. Check back soon.",
+    href: "#",
   },
 ];
 
@@ -79,24 +71,28 @@ export default function Projects() {
             </p>
           </div>
 
-          {/* Project Grid - 3 rows of 2 */}
+          {/* Project Grid - 2 rows of 2 */}
           <div className="flex flex-col gap-12 md:gap-[82px]">
-            {[0, 1, 2].map((row) => (
+            {[0, 1].map((row) => (
               <div key={row} className="flex flex-col md:flex-row gap-9">
                 {projects.slice(row * 2, row * 2 + 2).map((project, i) => (
                   <a
-                    href="/projects/crm-plus"
+                    href={project.href}
                     key={i}
                     className="flex flex-col gap-5 flex-1 group cursor-pointer"
                   >
-                    <div className="relative h-[250px] md:h-[442px] rounded-2xl overflow-hidden">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
+                    <div className="relative h-[250px] md:h-[442px] rounded-2xl overflow-hidden bg-[#d2d6db] p-8 md:p-12">
+                      {project.image && (
+                        <div className="relative w-full h-full">
+                          <Image
+                            src={project.image}
+                            alt={project.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className="object-contain transition-transform duration-300 group-hover:scale-105"
+                          />
+                        </div>
+                      )}
                     </div>
                     <div className="flex flex-col gap-3">
                       <h3 className="text-2xl font-medium leading-[1.37] text-dark">

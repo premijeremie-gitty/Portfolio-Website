@@ -7,17 +7,17 @@ import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
 // Two card sizes: portrait and landscape/square
 const photos = [
-  { src: "/images/image 1.JPG", alt: "Pool at sunset", portrait: true },
-  { src: "/images/PHOTO-2026-03-22-21-34-17.jpg", alt: "Couple laughing", portrait: false },
-  { src: "/images/IMG_4130.JPG", alt: "Couple selfie by wooden door", portrait: true },
-  { src: "/images/IMG_4391.jpg", alt: "Mountain views", portrait: false },
-  { src: "/images/IMG_4132.JPG", alt: "Italian street view", portrait: true },
-  { src: "/images/PHOTO-2026-03-22-21-32-25.jpg", alt: "Dog sitting", portrait: true, position: "top" },
-  { src: "/images/PHOTO-2026-03-22-21-35-53.jpg", alt: "Dining in Italy", portrait: true },
-  { src: "/images/IMG_4149.JPG", alt: "Mediterranean villa courtyard", portrait: false },
-  { src: "/images/IMG_2304.jpg", alt: "Charcuterie board", portrait: true },
-  { src: "/images/PHOTO-2026-03-22-21-46-11.jpg", alt: "Seafood spread", portrait: true },
-  { src: "/images/IMG_4467.JPG", alt: "Fun selfie with sunglasses", portrait: true },
+  { src: "/images/about/image 1.JPG", alt: "Pool at sunset", portrait: true },
+  { src: "/images/about/PHOTO-2026-03-22-21-34-17.jpg", alt: "Couple laughing", portrait: false },
+  { src: "/images/about/IMG_4130.JPG", alt: "Couple selfie by wooden door", portrait: true },
+  { src: "/images/about/IMG_4391.jpg", alt: "Mountain views", portrait: false },
+  { src: "/images/about/IMG_4132.JPG", alt: "Italian street view", portrait: true },
+  { src: "/images/about/PHOTO-2026-03-22-21-32-25.jpg", alt: "Dog sitting", portrait: true, position: "top" },
+  { src: "/images/about/PHOTO-2026-03-22-21-35-53.jpg", alt: "Dining in Italy", portrait: true },
+  { src: "/images/about/IMG_4149.JPG", alt: "Mediterranean villa courtyard", portrait: false },
+  { src: "/images/about/IMG_2304.jpg", alt: "Charcuterie board", portrait: true },
+  { src: "/images/about/PHOTO-2026-03-22-21-46-11.jpg", alt: "Seafood spread", portrait: true },
+  { src: "/images/about/IMG_4467.JPG", alt: "Fun selfie with sunglasses", portrait: true },
 ];
 
 export default function PhotoCarousel() {

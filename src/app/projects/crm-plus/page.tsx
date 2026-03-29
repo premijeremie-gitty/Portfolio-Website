@@ -19,12 +19,12 @@ const projectDetails = [
 
 // Image groups per solution block
 const solutionGroups: Record<string, string[]> = {
-  block1: ["/images/New sales process page.png", "/images/new opp type page.png"],
-  block2: ["/images/Kanban.png", "/images/Opportunity detail page.png"],
-  block3: ["/images/Preferences.png", "/images/opp detail page activity 2.png", "/images/Opp detail with activity.png"],
-  block4: ["/images/Estimation.png", "/images/opp detail estimate.png"],
-  block5: ["/images/Templates.png", "/images/Generate proposal.png", "/images/Opp detail proposal.png"],
-  block6: ["/images/Won opps.png"],
+  block1: ["/images/crm-plus/New sales process page.png", "/images/crm-plus/new opp type page.png"],
+  block2: ["/images/crm-plus/Kanban.png", "/images/crm-plus/Opportunity detail page.png"],
+  block3: ["/images/crm-plus/Preferences.png", "/images/crm-plus/opp detail page activity 2.png", "/images/crm-plus/Opp detail with activity.png"],
+  block4: ["/images/crm-plus/Estimation.png", "/images/crm-plus/opp detail estimate.png"],
+  block5: ["/images/crm-plus/Templates.png", "/images/crm-plus/Generate proposal.png", "/images/crm-plus/Opp detail proposal.png"],
+  block6: ["/images/crm-plus/Won opps.png"],
 };
 
 export default function CRMPlusCaseStudy() {
@@ -170,7 +170,7 @@ export default function CRMPlusCaseStudy() {
       <section className="w-full h-[300px] md:h-[560px] bg-light-bg px-5 md:px-12 py-8 md:py-12">
         <div className="relative w-full h-full">
           <Image
-            src="/images/Hero image CRM+.png"
+            src="/images/crm-plus/Hero image CRM+.png"
             alt="CRM+ hero"
             fill
             sizes="100vw"
@@ -184,12 +184,10 @@ export default function CRMPlusCaseStudy() {
       <section className="px-5 md:px-12 py-10 md:py-[60px]">
         <div className="flex flex-col gap-6 max-w-[1440px] mx-auto">
           <h1 className="text-[32px] md:text-[48px] leading-[1.2] text-dark max-w-[800px]">
-            CRM+: Complete re-platform of an existing product
+            CRM+: Building a CRM for the Trades, 0→1
           </h1>
           <p className="text-lg md:text-xl leading-[1.5] text-muted max-w-[680px]">
-            Redesigning and rebuilding a legacy CRM from the ground up for the
-            commercial trades industry, turning a dated tool into a modern
-            platform that drives real revenue.
+            Led the design of a CRM built for the trades and integrated into our core platform, driving expansion revenue growth and enabling a critical strategic customer go-live.
           </p>
         </div>
       </section>
@@ -314,7 +312,7 @@ export default function CRMPlusCaseStudy() {
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-2 max-w-[1100px]">
                 <h3 className="text-[24px] font-bold text-dark">
-                  Robust profiles
+                  Sales Process &amp; Opportunity Type Setup
                 </h3>
                 <p className="text-base leading-[1.75] text-muted">
                   We launched with profiles with standard and custom field
@@ -330,7 +328,7 @@ export default function CRMPlusCaseStudy() {
                 >
                   <div className="relative w-full h-full">
                     <Image
-                      src="/images/New sales process page.png"
+                      src="/images/crm-plus/New sales process page.png"
                       alt="New sales process page"
                       fill
                       sizes="50vw"
@@ -345,7 +343,7 @@ export default function CRMPlusCaseStudy() {
                 >
                   <div className="relative w-full h-full">
                     <Image
-                      src="/images/new opp type page.png"
+                      src="/images/crm-plus/new opp type page.png"
                       alt="New opportunity type page"
                       fill
                       sizes="50vw"
@@ -362,7 +360,7 @@ export default function CRMPlusCaseStudy() {
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-2 max-w-[1100px]">
                 <h3 className="text-[24px] font-bold text-dark">
-                  Streamlined pipeline management
+                  Managing Opportunities
                 </h3>
                 <p className="text-base leading-[1.75] text-muted">
                   Lorem ipsum dolor sit amet consectetur. Adipiscing mi maecenas
@@ -377,7 +375,7 @@ export default function CRMPlusCaseStudy() {
                 >
                   <div className="relative w-full h-full">
                     <Image
-                      src="/images/Kanban.png"
+                      src="/images/crm-plus/Kanban.png"
                       alt="Kanban view"
                       fill
                       sizes="50vw"
@@ -392,7 +390,7 @@ export default function CRMPlusCaseStudy() {
                 >
                   <div className="relative w-full h-full">
                     <Image
-                      src="/images/Opportunity detail page.png"
+                      src="/images/crm-plus/Opportunity detail page.png"
                       alt="Opportunity detail page"
                       fill
                       sizes="50vw"
@@ -409,7 +407,7 @@ export default function CRMPlusCaseStudy() {
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-2 max-w-[1100px]">
                 <h3 className="text-[24px] font-bold text-dark">
-                  Activity tracking &amp; preferences
+                  Sales Activity and Calendar Integration
                 </h3>
                 <p className="text-base leading-[1.75] text-muted">
                   Lorem ipsum dolor sit amet consectetur. Adipiscing mi maecenas
@@ -426,7 +424,7 @@ export default function CRMPlusCaseStudy() {
                   >
                     <div className="relative w-full h-full">
                       <Image
-                        src="/images/Preferences.png"
+                        src="/images/crm-plus/Preferences.png"
                         alt="Preferences"
                         fill
                         sizes="50vw"
@@ -441,7 +439,7 @@ export default function CRMPlusCaseStudy() {
                   >
                     <div className="relative w-full h-full">
                       <Image
-                        src="/images/opp detail page activity 2.png"
+                        src="/images/crm-plus/opp detail page activity 2.png"
                         alt="Opportunity detail with activity"
                         fill
                         sizes="50vw"
@@ -458,7 +456,7 @@ export default function CRMPlusCaseStudy() {
                 >
                   <div className="relative w-full h-full">
                     <Image
-                      src="/images/Opp detail with activity.png"
+                      src="/images/crm-plus/Opp detail with activity.png"
                       alt="Opportunity detail with activity"
                       fill
                       sizes="100vw"
@@ -475,7 +473,7 @@ export default function CRMPlusCaseStudy() {
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-2 max-w-[1100px]">
                 <h3 className="text-[24px] font-bold text-dark">
-                  Estimation
+                  Creating Estimates for Projects and Jobs
                 </h3>
                 <p className="text-base leading-[1.75] text-muted">
                   Lorem ipsum dolor sit amet consectetur. Adipiscing mi maecenas
@@ -490,7 +488,7 @@ export default function CRMPlusCaseStudy() {
                 >
                   <div className="relative w-full h-full">
                     <Image
-                      src="/images/Estimation.png"
+                      src="/images/crm-plus/Estimation.png"
                       alt="Estimation"
                       fill
                       sizes="50vw"
@@ -505,7 +503,7 @@ export default function CRMPlusCaseStudy() {
                 >
                   <div className="relative w-full h-full">
                     <Image
-                      src="/images/opp detail estimate.png"
+                      src="/images/crm-plus/opp detail estimate.png"
                       alt="Opportunity detail estimation"
                       fill
                       sizes="50vw"
@@ -522,7 +520,7 @@ export default function CRMPlusCaseStudy() {
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-2 max-w-[1100px]">
                 <h3 className="text-[24px] font-bold text-dark">
-                  Proposals &amp; templates
+                  Creating Templates and Sending Proposals
                 </h3>
                 <p className="text-base leading-[1.75] text-muted">
                   Lorem ipsum dolor sit amet consectetur. Adipiscing mi maecenas
@@ -539,7 +537,7 @@ export default function CRMPlusCaseStudy() {
                   >
                     <div className="relative w-full h-full">
                       <Image
-                        src="/images/Templates.png"
+                        src="/images/crm-plus/Templates.png"
                         alt="Templates"
                         fill
                         sizes="50vw"
@@ -554,7 +552,7 @@ export default function CRMPlusCaseStudy() {
                   >
                     <div className="relative w-full h-full">
                       <Image
-                        src="/images/Generate proposal.png"
+                        src="/images/crm-plus/Generate proposal.png"
                         alt="Generate proposal"
                         fill
                         sizes="50vw"
@@ -571,7 +569,7 @@ export default function CRMPlusCaseStudy() {
                 >
                   <div className="relative w-full h-full">
                     <Image
-                      src="/images/Opp detail proposal.png"
+                      src="/images/crm-plus/Opp detail proposal.png"
                       alt="Proposal opportunity detail"
                       fill
                       sizes="100vw"
@@ -588,7 +586,7 @@ export default function CRMPlusCaseStudy() {
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-2 max-w-[1100px]">
                 <h3 className="text-[24px] font-bold text-dark">
-                  Won opportunities
+                  Converting to Operational Work
                 </h3>
                 <p className="text-base leading-[1.75] text-muted">
                   Lorem ipsum dolor sit amet consectetur. Adipiscing mi maecenas
@@ -602,7 +600,7 @@ export default function CRMPlusCaseStudy() {
               >
                 <div className="relative w-full h-full">
                   <Image
-                    src="/images/Won opps.png"
+                    src="/images/crm-plus/Won opps.png"
                     alt="Won opportunities"
                     fill
                     sizes="100vw"
@@ -624,10 +622,10 @@ export default function CRMPlusCaseStudy() {
             Next project
           </span>
           <a
-            href="/projects"
+            href="/projects/multiple-bill-tos"
             className="text-2xl md:text-4xl font-medium text-white transition-colors duration-200 hover:text-[#ee5a32]"
           >
-            Project title goes here &rarr;
+            Multiple Bill To&apos;s &rarr;
           </a>
         </div>
       </section>
